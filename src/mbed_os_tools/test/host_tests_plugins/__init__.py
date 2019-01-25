@@ -41,7 +41,8 @@ from . import module_reset_mps2
 from . import module_copy_mps2
 #import module_copy_jn51xx
 #import module_reset_jn51xx
-
+from . import module_copy_stflash
+from . import module_reset_stflash
 
 # Plugin registry instance
 HOST_TEST_PLUGIN_REGISTRY = host_test_registry.HostTestRegistry()
@@ -66,6 +67,8 @@ HOST_TEST_PLUGIN_REGISTRY.register_plugin(module_reset_ublox.load_plugin())
 HOST_TEST_PLUGIN_REGISTRY.register_plugin(module_copy_ublox.load_plugin())
 #HOST_TEST_PLUGIN_REGISTRY.register_plugin(module_copy_jn51xx.load_plugin())
 #HOST_TEST_PLUGIN_REGISTRY.register_plugin(module_reset_jn51xx.load_plugin())
+HOST_TEST_PLUGIN_REGISTRY.register_plugin(module_copy_stflash.load_plugin())
+HOST_TEST_PLUGIN_REGISTRY.register_plugin(module_reset_stflash.load_plugin())
 
 # TODO: extend plugin loading to files with name module_*.py loaded ad-hoc
 
