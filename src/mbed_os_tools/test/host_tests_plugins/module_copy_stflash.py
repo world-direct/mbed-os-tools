@@ -27,7 +27,7 @@ class HostTestPluginCopyMethod_Stflash(HostTestPluginBase):
     name = 'HostTestPluginCopyMethod_Stflash'
     type = 'CopyMethod'
     capabilities = ['stflash']
-    required_parameters = ['image_path','arm_serial']
+    required_parameters = ['image_path','target_id']
 
     def __init__(self):
         """ ctor
@@ -55,14 +55,14 @@ class HostTestPluginCopyMethod_Stflash(HostTestPluginBase):
             self.print_plugin_error("Error: image path not specified")
             return False
         
-        if not kwargs['arm_serial']:
-            self.print_plugin_error("Error: arm seraial not specified")
+        if not kwargs['target_id']:
+            self.print_plugin_error("Error: arm serial not specified use target_id")
             return False
 
         result = False
         if self.check_parameters(capability, *args, **kwargs) is True:
             image_path = os.path.normpath(kwargs['image_path'])
-            arm_serial = kwargs['arm_serial']
+            arm_serial = kwargs['target_id']
             if capability == 'stflash':
                 # Example:
                 # ST-LINK_CLI.exe -p "C:\Work\mbed\build\test\DISCO_F429ZI\GCC_ARM\MBED_A1\basic.bin"

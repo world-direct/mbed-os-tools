@@ -26,7 +26,7 @@ class HostTestPluginResetMethod_Stflash(HostTestPluginBase):
     name = 'HostTestPluginResetMethod_Stflash'
     type = 'ResetMethod'
     capabilities = ['stflash']
-    required_parameters = ['arm_serial']
+    required_parameters = ['target_id']
     stable = False
 
     def __init__(self):
@@ -52,7 +52,7 @@ class HostTestPluginResetMethod_Stflash(HostTestPluginBase):
 
         @return Capability call return value
         """
-        if not kwargs['arm_serial']:
+        if not kwargs['target_id']:
             self.print_plugin_error("Error: arm seraial not specified")
             return False
 
@@ -61,7 +61,7 @@ class HostTestPluginResetMethod_Stflash(HostTestPluginBase):
             if capability == 'stflash':
                 # Example:
                 # ST-LINK_CLI.exe -Rst -Run
-                arm_serial = kwargs['arm_serial']
+                arm_serial = kwargs['target_id']
                 cmd = [self.ST_LINK_CLI,'--serial', arm_serial,'reset']
                 result = self.run_command(cmd, shell=False)
         return result
